@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact form</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing: border-box;
+        }
+        body{
+            height:100vh;
+            display:flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .container{
+            
+            /* background-color: #b8b0b1; */
+            background-color: #fff;
+            width:100%;
+            height:100vh;
+            background:
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            left:600px;
+        }
+        form{
+            background:#fff;
+            display:flex;
+            flex-direction: column;
+            padding:2vw 4vw;
+            width: 90%;
+            max-width: 600px;
+            border-radius: 10px;
+        }
+form h3{
+    color:#555
+    font-weight:800;
+    margin-bottom:20px;
+}
+ form input, form textarea{
+border:0;
+margin:10px 0;
+padding:20px;
+outline:none;
+background:#f5f5f5;
+font-size:16px;
+ }
+ form button{
+    padding:15px;
+    background:#ff5361;
+    color:white;
+    font-size:18px;
+    border:0;
+    outline:none;
+    cursor:pointer;
+    width:150px;
+    margin:20px auto auto 0;
+    border-radius:30px;
+ }
+ </style>
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap" rel="stylesheet">
+
+</head>
+<body >
+    <div class="container text-center">
+        <!-- <form> -->
+        <form method="post" action="https://script.google.com/macros/s/AKfycbzh1yyqUWS147MykgdyG0DypqqGiuoFYC7DkmmPJDt7NcSb_OF6R2zcuy80CweYUVUjFA/exec" onsubmit="return validateAll()">
+           
+    <h3 style="font-family: 'Rock Salt', cursive;">CONTACT ME</h3>
+
+     <!-- //Name verification// -->
+     <input style="font-family: 'Comic Neue', cursive;" type="text"  name="full-Name" id="name" placeholder="Enter your name"  required>
+    
+     <label style="font-family: 'Comic Neue', cursive;color:green;visibility: hidden;" id="msg1"  >Name verified</label>
+     
+     <!-- <label style="font-family: 'Comic Neue', cursive;color:red;visibility: hidden;"id="msg2"  >Invalid name</label> -->
+ 
+     <!-- Number validation -->
+     <input style="font-family: 'Comic Neue', cursive;" type="number"  name="contact-Num" id="number" placeholder="Enter your mobile number"  required>
+     
+     <label style="font-family: 'Comic Neue', cursive;color:green;visibility: hidden;" id="msg3" >Number verified</label>
+    
+     <!-- <label id="msg2"  style="color:red;visibility: hidden;">Invalid name</label> -->
+ 
+     <!-- Email validation -->
+     <input style="font-family: 'Comic Neue', cursive;" type="email"  name="user-Email" id="email" placeholder="Email"  required>
+     
+     <label style="font-family: 'Comic Neue', cursive;color:green;visibility: hidden;" id="msg4"  >Email verified </label>
+    
+     <!-- //message box// -->
+     <textarea style="font-family: 'Comic Neue', cursive;" name="message" rows="7" placeholder="Your message" required></textarea>
+  
+ 
+     <button style="font-family: 'Comic Neue', cursive;" value="Submit" onclick="validateName()&&validateNumber()&&validateEmail()" type="submit" >Submit</button>
+ 
+   </form>
+    </div>
+
+    <script >
+       //validate name/
+function validateName(){
+    var fullName = document.getElementById('name').value;
+    var regx = /^[A-Za-z\s\D]+$/;
+
+    if(regx.test(fullName)){
+        // alert("Valid name");
+        document.getElementById("msg1").style.visibility = "visible";
+        return true;
+    }
+    else{
+        alert("Invalid name");
+        
+    return false;}
+}
+
+//validate number
+function validateNumber(){
+    var mobileNumber = document.getElementById("number").value;
+    var regx =/^[0-9]{10}$/
+
+    if (regx.test(mobileNumber)){
+        document.getElementById("msg3").style.visibility = "visible";
+        return true;
+    }
+    else{
+        alert("Invalid number");
+        
+    return false;}
+
+    }
+
+    //validate email
+function validateEmail(){
+    var userEmail = document.getElementById("email").value;
+    // var regx =/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+var regx=/^([\w\.\-\_\~]+)@([\w]+)\.([a-z]{2,3})$/
+    if (regx.test(userEmail)){
+        document.getElementById("msg4").style.visibility = "visible";
+        return true;
+    }
+    else{
+        alert("Invalid Email");
+        
+    return false;}
+
+    }
+        function validateAll(){
+        validateName();
+        validateNumber();
+        validateEmail();
+        
+        if (validateEmail()&& validateName()&&validateNumber()){
+            return true
+        }
+        else{return false}
+        }
+            </script>
+
+</body>
+</html>
